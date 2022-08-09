@@ -1,0 +1,180 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-primary:'Roboto', sans-serif;
+
+  --text-color: #E1E1E6;
+  --btn-color: #065E7C;
+  --primary-color: #06181C;
+  --secondary-color:#06161b80;
+  
+}
+
+body {
+  font-size:16px;
+
+  background: rgb(0, 0, 0);
+  padding:0 3rem;
+}
+
+body * {
+  font-family:var(--ff-primary);
+  color: var(--text-color);
+}
+
+header {
+  height:4.8rem;
+  margin-top:2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  gap:2rem;
+}
+
+a{
+  text-decoration:none;
+}
+
+header img {
+  width:15rem;
+
+}
+
+#favorite-search {
+  display: flex;
+  align-items:center;
+  gap:.5rem;
+}
+
+#input-search {
+  width:clamp(5rem, 10rem + 30vw, 35rem);
+
+  height:3.8rem;
+
+  padding:1rem 2rem 1rem 1rem;
+  border-radius:.5rem;
+  border:none;
+
+  background: #06181C;
+
+}
+
+#button-search {
+  height:4.2rem;
+
+  padding:1rem 2.5rem;
+  border-radius:.5rem;
+
+  background:var(--btn-color);
+  text-transform: uppercase;
+  white-space:nowrap;
+}
+
+#page-content {
+  max-width:1120px;
+  margin: 5rem auto 0;
+
+  display: grid;
+  justify-content: center;
+  
+  gap:5rem;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+
+  text-align:left;
+  padding:2rem;
+  
+}
+
+table thead{
+  height:4rem;
+  background:#092D38;
+
+}
+
+table th:nth-child(1){
+  border-top-left-radius:5px;
+}
+table th:nth-child(4){
+  border-top-right-radius:5px;
+}
+
+table th,
+table td{
+  padding:0 3rem;
+} 
+
+
+table tr:nth-child(odd) {
+  background:var(--secondary-color);
+
+
+}
+table tr:nth-child(even) {
+  background:var(--primary-color);
+  border-top:1px solid #4A808C;
+  border-bottom:1px solid #4A808C;
+}
+
+tbody tr:last-child td:nth-child(1){
+  border-bottom-left-radius:5px;
+}
+tbody tr:last-child td:nth-child(4){
+  border-bottom-right-radius:5px;
+}
+
+.user{
+  height:8rem;
+}
+
+.user td:nth-child(1) {
+  width:40rem;
+}
+.user td:nth-child(2),
+.user td:nth-child(3),
+.user td:nth-child(4) {
+  width:16rem;
+}
+
+.user td img {
+  width:5rem;
+
+  border-radius:50%;
+}
+.user td a{
+  display: flex;
+  gap:1rem;
+}
+.user a p{
+  display:grid;
+  align-content:center;
+  gap:.5rem;
+
+  font-weight:700;
+  white-space: nowrap;
+}
+.user p span{
+  font-weight:400;
+}
+
+#delete-btn {
+  color:#F75A68;
+
+  background:transparent;
+  border:none;
+
+  cursor:pointer;
+}
+#delete-btn:hover {
+  filter: brightness(3);
+}

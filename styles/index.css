@@ -42,9 +42,12 @@ a{
   text-decoration:none;
 }
 
+input:focus{
+  outline:none;
+}
+
 header img {
   width:15rem;
-
 }
 
 #favorite-search {
@@ -63,7 +66,6 @@ header img {
   border:none;
 
   background: #06181C;
-
 }
 
 #button-search {
@@ -73,8 +75,12 @@ header img {
   border-radius:.5rem;
 
   background:var(--btn-color);
+  
+  font-size:clamp(.8rem, 1rem + 2vw, 1.2rem);
   text-transform: uppercase;
   white-space:nowrap;
+
+  cursor:pointer;
 }
 
 #page-content {
@@ -94,6 +100,7 @@ table {
   text-align:left;
   padding:2rem;
   
+  font-size:clamp(.4rem, .6rem + 1vw, 1.6rem);
 }
 
 table thead{
@@ -114,10 +121,8 @@ table td{
   padding:0 3rem;
 } 
 
-
 table tr:nth-child(odd) {
   background:var(--secondary-color);
-
 
 }
 table tr:nth-child(even) {
@@ -147,7 +152,7 @@ tbody tr:last-child td:nth-child(4){
 }
 
 .user td img {
-  width:5rem;
+  width:clamp(1.2rem, 2rem + 2vw, 5rem);
 
   border-radius:50%;
 }
@@ -174,7 +179,37 @@ tbody tr:last-child td:nth-child(4){
   border:none;
 
   cursor:pointer;
+  font-size:10px;
 }
 #delete-btn:hover {
   filter: brightness(3);
+}
+
+@media(max-width:500px){
+  header {
+    gap:unset;
+  }
+  header img {
+    width:8rem;
+  }
+  #input-search {
+    width:100px;
+    font-size:10.5px;
+  }
+  #button-search {
+    padding:0 0.5rem;
+  }
+  table th,
+  table td{
+  padding:0 .6rem;
+  } 
+  .user td:nth-child(1) {
+    width:unset;
+  }
+  .user td:nth-child(2),
+  .user td:nth-child(3),
+  .user td:nth-child(4) {
+    width:unset;
+  }
+
 }

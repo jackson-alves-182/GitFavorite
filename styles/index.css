@@ -142,6 +142,10 @@ tbody tr{
   height:8rem;
 }
 
+tbody tr:nth-child(1){
+  animation: slide-right 2s;
+}
+
 tr td:nth-child(1) {
   width:40rem;
 }
@@ -214,4 +218,13 @@ tr p span{
     width:unset;
   }
 
+}
+
+@keyframes slide-right{
+  0%{
+    transform: translateX(-400px);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }

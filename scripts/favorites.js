@@ -39,7 +39,10 @@ export class Favorites {
 
     const filteredUsers = this.entries.filter( entry =>
       entry.login !== user.login )
-      console.log(filteredUsers)
+
+    this.entries = filteredUsers;
+
+    this.update();
   }
 }
 

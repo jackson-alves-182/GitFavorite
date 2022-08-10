@@ -104,7 +104,7 @@ table {
 }
 
 table thead{
-  height:4rem;
+  height:5rem;
   background:#092D38;
 
 }
@@ -138,37 +138,39 @@ tbody tr:last-child td:nth-child(4){
   border-bottom-right-radius:5px;
 }
 
-.user{
+tbody tr{
   height:8rem;
 }
 
-.user td:nth-child(1) {
+tr td:nth-child(1) {
   width:40rem;
 }
-.user td:nth-child(2),
-.user td:nth-child(3),
-.user td:nth-child(4) {
+tr td:nth-child(2),
+tr td:nth-child(3),
+tr td:nth-child(4) {
   width:16rem;
 }
 
-.user td img {
+tr td img {
   width:clamp(1.2rem, 2rem + 2vw, 5rem);
 
   border-radius:50%;
 }
-.user td a{
+tr td a{
   display: flex;
   gap:1rem;
 }
-.user a p{
+tr a div{
   display:grid;
-  align-content:center;
+  gap:.4rem;
+}
+tr a p{
   gap:.5rem;
 
   font-weight:700;
   white-space: nowrap;
 }
-.user p span{
+tr p span{
   font-weight:400;
 }
 
@@ -179,7 +181,7 @@ tbody tr:last-child td:nth-child(4){
   border:none;
 
   cursor:pointer;
-  font-size:10px;
+  font-size:clamp(0.6rem, 0.8rem + 1vw, 1.6rem);
 }
 #delete-btn:hover {
   filter: brightness(3);
@@ -201,14 +203,14 @@ tbody tr:last-child td:nth-child(4){
   }
   table th,
   table td{
-  padding:0 .6rem;
+  padding:0 1rem;
   } 
-  .user td:nth-child(1) {
+  tr td:nth-child(1) {
     width:unset;
   }
-  .user td:nth-child(2),
-  .user td:nth-child(3),
-  .user td:nth-child(4) {
+  tr td:nth-child(2),
+  tr td:nth-child(3),
+  tr td:nth-child(4) {
     width:unset;
   }
 

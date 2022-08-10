@@ -4,24 +4,42 @@ export class Favorites {
   constructor(root){
     this.root = document.querySelector(root);
     this.load();
+
   }
 
+  async add(username){
+    try{
 
-load() {
-  this.entries = [
-    {
-      login:'maykbrito',
-      name:"Mayk Britto",
-      public_repost:'80',
-      followers:'14000'
-  
-    },
-    {
-      login:'jackson-alves-182',
-      name:"Jackson Alves",
-      public_repost:'29',
-      followers:'9'
-    }]
+      const userExists = this.entries.find(entry => entry.login === username)
+
+      if(userExists){
+        throw new Error("Usuário já cadastrado !!");
+      }
+      const user = await GithubUser.search(username);
+
+      if(user.login === undefined){
+        throw new Error ("Usuário não existe !!");
+      }
+
+      this.entries = [user, ...this.entries];
+
+
+      this.update();
+    }
+    catch(error){
+      alert(error.message);
+    }
+  } 
+
+  load() {
+    this.entries = [];
+  }
+
+  delete(user){
+
+    const filteredUsers = this.entries.filter( entry =>
+      entry.login !== user.login )
+      console.log(filteredUsers)
   }
 }
 
@@ -32,9 +50,22 @@ export class FavoritesView extends Favorites {
     this.tbody = this.root.querySelector('table tbody');
   
     this.update();
+    this.addNewUser();
+
+  }
+
+
+  addNewUser(){
+    const addButton = this.root.querySelector('#button-search');
+    addButton.onclick = () => {
+      const { value } = document.querySelector('#input-search');
+      
+      this.add(value);
+    }
   }
 
   update(){
+    this.removeAllTr();
 
     this.entries.forEach( user => {
       const row = this.createRow();
@@ -43,11 +74,14 @@ export class FavoritesView extends Favorites {
       row.querySelector('.user img').src = `https://github.com/${user.login}.png`;
       row.querySelector('.user p').textContent = user.name;
       row.querySelector('.user span').textContent = user.login;
-      row.querySelector('.repositories').textContent = user.public_repost;
+      row.querySelector('.repositories').textContent = user.public_repos;
       row.querySelector('.followers').textContent = user.followers;
+      
+      row.querySelector('#delete-btn').onclick = () => {
+        this.delete(user);
+      }
 
       this.tbody.append(row);
-      
     })
 
   }
@@ -75,4 +109,7 @@ export class FavoritesView extends Favorites {
       return tr;
   }
 
+  removeAllTr(){
+    this.tbody.querySelectorAll('tr').forEach((tr) => tr.remove());
+  }
 }
